@@ -36,6 +36,7 @@ showTime(30);
 登陆到CQJTU的教师评分网站(10.1.90.3/pg/).
 
 使用Firefox下的HackBar插件（或者其他类似功能的插件/脚本都行），可以直接针对一个页面进行POST操作。
+![image](./image.png)
 
 POST的地址:
 ```
