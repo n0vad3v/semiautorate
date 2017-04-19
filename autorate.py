@@ -93,17 +93,18 @@ print("Total: %d"%len(courses))
  
 #judge
 for CID in courses.keys():
-    print("\n::[%5s] %s\n"%(CID,courses[CID]))
-    #get one course
-    url="http://10.1.90.3/pg/Lesson.asp?L_id=%s"%CID
-    #just animation
-    #this is question list
-    clist = requests.get(url,headers=h3).content.decode('GBK')
-    #course atter id
-    att = re.findall(r'L_att" value=([0-9])',clist,flags=16)[0]
-    #now we have got the page and start to fill it
-    h4=bh
-    h4.update({
+    try:
+        print("\n::[%5s] %s\n"%(CID,courses[CID]))
+        #get one course
+        url="http://10.1.90.3/pg/Lesson.asp?L_id=%s"%CID
+        #just animation
+        #this is question list
+        clist = requests.get(url,headers=h3).content.decode('GBK')
+        #course atter id
+        att = re.findall(r'L_att" value=([0-9])',clist,flags=16)[0]
+        #now we have got the page and start to fill it
+        h4=bh
+        h4.update({
                 "Origin": "http://10.1.90.3", 
                 "Referer": "http://10.1.90.3/pg/Lesson.asp?L_id=%s"%CID, 
                 "Cache-Control": "max-age=0", 
@@ -111,9 +112,9 @@ for CID in courses.keys():
                 "Content-Type": "application/x-www-form-urlencoded"
                 })
  
-    url2="http://10.1.90.3/pg/result.asp"
+        url2="http://10.1.90.3/pg/result.asp"
  
-    myjudge={
+        myjudge={
              'L_att': att,
              'L_id': CID,
              'R1': aob(),
@@ -123,41 +124,43 @@ for CID in courses.keys():
              'R5': aob(),
              'R6': aob(),
             }
-    check=''
-    for i in range(1,7):
-            check += myjudge['R%s'%i]
-    #too nice
-    if 'B' not in check:
-        myjudge['R3'] = 'B'
-    #too bad
-    if 'A' not in check:
-        myjudge['R3'] = 'A'
+        check=''
+        for i in range(1,7):
+                check += myjudge['R%s'%i]
+        #too nice
+        if 'B' not in check:
+            myjudge['R3'] = 'B'
+        #too bad
+        if 'A' not in check:
+            myjudge['R3'] = 'A'
  
-    #like a man
-    print('waiting')
-    time.sleep(stime)
-    print('go on')
-    requests.post(url2,headers=h4,data=myjudge)
-    #sure?
-    Total=0
-    myensure={'L_id': CID}
-    for i in range(1,7):
-        if myjudge['R%s'%i]=='A':
-            myensure['R_%s'%i]=16
-            Total+=16
-        else:
-            myensure['R_%s'%i]=13
-            Total+=13
-    #for ensure
-    #refresh
-    myensure['Total']=Total
-    for k,v in myensure.items():
-        print(k,v)
+        #like a man
+        print('waiting')
+        time.sleep(stime)
+        print('go on')
+        requests.post(url2,headers=h4,data=myjudge)
+        #sure?
+        Total=0
+        myensure={'L_id': CID}
+        for i in range(1,7):
+            if myjudge['R%s'%i]=='A':
+                myensure['R_%s'%i]=16
+                Total+=16
+            else:
+                myensure['R_%s'%i]=13
+                Total+=13
+        #for ensure
+        #refresh
+        myensure['Total']=Total
+        for k,v in myensure.items():
+            print(k,v)
  
-    #submite now!
-    url3='http://10.1.90.3/pg/results.asp'
-    h4['Referer']="http://10.1.90.3/pg/result.asp"
-    r = requests.post(url3,headers=h4,data=myensure)
-    #result
-    ret=r.content.decode('gbk')
-    print(ret[15:26],'\n')
+        #submite now!
+        url3='http://10.1.90.3/pg/results.asp'
+        h4['Referer']="http://10.1.90.3/pg/result.asp"
+        r = requests.post(url3,headers=h4,data=myensure)
+        #result
+        ret=r.content.decode('gbk')
+        print(ret[15:26],'\n')
+    except:
+        print("cannot rate now!")
