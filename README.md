@@ -1,6 +1,6 @@
-# Semi Auto Rate
+# <del>Semi</del> Auto Rate
 
-一个<del>半自动</del>全自动的快速给教师评分的POST数据收集仓库。不希望了解原理的话，用法在最下方。
+一个<del>半自动</del>全自动的快速给教师评分的POST数据收集和自动评分脚本的仓库。不希望了解原理的话，用法在最下方。
 
 # 声明
 
@@ -58,7 +58,7 @@ R1=A&R2=A&R3=A&R4=A&R5=A&R6=A&L_att=1&L_id=888
 
 使用autorate.py，使用Python3，运行前修改文件19行的UID为你的真实学号。
 
-十分感谢[jazoma](https://github.com/jazoma)提供的十分优雅的全自动脚本！
+十分感谢[jazoma](https://github.com/jazoma)提供的优雅的全自动脚本！
 
 # 声明
 
