@@ -2,6 +2,7 @@ import requests
 import re
 import time
 import random
+from random import randrange
  
  
 '''
@@ -21,6 +22,11 @@ stime=5              # waiting how long
 badprob=0.3          # the probability of bad
 ######################
  
+
+head = ['Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.21 Safari/537.36','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393','Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.2743.82 Safari/537.36 OPR/39.0.2256.43']
+broswer = head[randrange(len(head))]
+print(broswer)
+
 def aob():
     '''
     ****************
@@ -37,7 +43,7 @@ bh={
     "Accept-Language": "zh-CN,zh;q=0.8", 
     "Accept-Encoding": "gzip, deflate, sdch", 
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", 
-    "User-Agent": "Mozilla/5.0 (Cendows 1.0 x128)", 
+    "User-Agent": broswer, 
     "Upgrade-Insecure-Requests": "1"   
     }
  
