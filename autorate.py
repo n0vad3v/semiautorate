@@ -17,15 +17,15 @@ from random import randrange
 '''
  
 #config###############
-UID="6316040*****"   # your ID
+UID="6316040*****"   # Enter your Student ID here
 stime=5              # waiting how long
 badprob=0.3          # the probability of bad
 ######################
  
 
+# Random browser header
 head = ['Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.21 Safari/537.36','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393','Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.2743.82 Safari/537.36 OPR/39.0.2256.43']
 broswer = head[randrange(len(head))]
-print(broswer)
 
 def aob():
     '''
@@ -62,7 +62,7 @@ SID = r.headers['Set-Cookie'].split('; ')[0]
 #login
 data={
     "T1":UID,     #username
-    "T2":'pass',      #password
+    "T2":'pass',  #password
     "R1":"S",     #student
     #"B1":"%B5%C7%C2%BD" #unknown
 }
