@@ -54,6 +54,10 @@ R1=A&R2=A&R3=A&R4=A&R5=A&R6=A&L_att=1&L_id=888
 
 使用autorate.py，使用Python3，运行前修改文件19行的UID为你的真实学号。
 
+```
+python3 autorate.py
+```
+
 十分感谢[jazoma](https://github.com/jazoma)提供的优雅的全自动脚本！
 
 # 声明
@@ -65,3 +69,7 @@ R1=A&R2=A&R3=A&R4=A&R5=A&R6=A&L_att=1&L_id=888
 # TODO:
 - [ ] 对系统做进一步分析，做到可以完成评满分，和最低分
 - [x] 制作一个全自动脚本自遍历页面中所有可以评分的科目给所有教师一键自动评分
+
+# License
+
+GNU General Public License v3.0
